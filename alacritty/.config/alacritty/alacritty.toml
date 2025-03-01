@@ -1,0 +1,8 @@
+[window]
+opacity = 0.85
+
+[font]
+normal = { family = "JetBrainsMono NF" }
+
+[terminal]
+shell = { program = "zsh", args = [ "-c", "tmux new-session -A -s default" ] }
