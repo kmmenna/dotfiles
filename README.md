@@ -27,8 +27,8 @@ $ git clone git@github.com/kmmenna/dotfiles.git .dotfiles
 $ cd .dotfiles
 ```
 
-then use GNU stow to create symlinks
+then use GNU stow to create symlinks to the modules, like git:
 
 ```
-$ stow .
+$ stow git
 ```
