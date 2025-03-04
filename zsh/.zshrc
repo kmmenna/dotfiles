@@ -54,7 +54,12 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 
 # Prompt
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/posh.toml)"
+if [[ -d "$HOME/.config/ohmyposh" ]]; then
+  if [[ ! -e "$HOME/.local/bin/oh-my-posh" ]]; then
+    curl -s https://ohmyposh.dev/install.sh | bash -s
+  fi
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/posh.toml)"
+fi
 
 
 # Aliases
@@ -67,4 +72,4 @@ eval "$(zoxide init --cmd cd zsh)"
 
 
 # Load environment variables
-source "$HOME/.zshenv"
+# source "$HOME/.zshenv"
