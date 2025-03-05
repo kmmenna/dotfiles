@@ -1,0 +1,4 @@
+theme = dark:catppuccin-mocha,light:catppuccin-latte
+background-opacity = 0.85
+
+command = ~/.config/ghostty/init.sh
