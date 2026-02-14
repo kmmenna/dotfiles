@@ -33,7 +33,6 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
@@ -64,12 +63,15 @@ fi
 
 # Aliases
 alias c='clear'
-alias ls='ls --color'
+
+alias ls='eza'
+alias ll='eza -l'
+alias tree='eza --tree'
 
 # Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(fzf --zsh)" # Fzf is a fuzzy finder for Zsh
+eval "$(zoxide init --cmd cd zsh)" # Zoxide is a smarter cd command for Zsh
 
 
 # Load environment variables
-# source "$HOME/.zshenv"
+source "$HOME/.zshenv"

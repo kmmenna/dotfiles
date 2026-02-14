@@ -1,40 +1,65 @@
 # My dotfiles
 
-This directory contains the dotfiles for my system
+Dotfiles managed with [Chezmoi](https://chezmoi.io).
+
+## Contents
+
+- **Shell:** zsh (`.zshenv`, `.zshrc`)
+- **Git:** `.gitconfig`
+- **Tmux:** `.tmux.conf`, `~/.config/tmux/` (config, theme; TPM plugins via external)
+- **Oh My Posh:** `~/.config/ohmyposh/posh.toml`
 
 ## Requirements
 
-Ensure you have the following installed on your system
+- [Git](https://git-scm.com/)
+- [Chezmoi](https://chezmoi.io/)
 
-### Git
+### Install Chezmoi
 
+**One-liner (curl):**
 ```bash
-pacman -S git
+sh -c "$(curl -fsLS get.chezmoi.io)"
 ```
 
-### Stow
-
+**Package manager (examples):**
 ```bash
-pacman -S stow
+# Fedora / RHEL
+sudo dnf install chezmoi
+
+# Arch
+sudo pacman -S chezmoi
 ```
 
 ## Installation
 
-First, check out the dotfiles repo in your $HOME directory using git
+Clone the repo and apply with Chezmoi:
 
 ```bash
-$ git clone git@github.com/kmmenna/dotfiles.git .dotfiles
-$ cd .dotfiles
+chezmoi init https://github.com/kmmenna/dotfiles.git
+chezmoi apply
 ```
 
-then use GNU stow to create symlinks to the modules, like git:
+Or, if you already have the repo cloned:
 
 ```bash
-$ stow git
+chezmoi init /path/to/dotfiles
+chezmoi apply
 ```
 
-or use GNU stow to create symlinks to all modules:
+To see what would change without applying:
 
 ```bash
-$ stow $(basename -a */)
+chezmoi diff
 ```
+
+## Externals
+
+- **TPM (Tmux Plugin Manager)** is fetched by Chezmoi from GitHub (see `.chezmoiexternal.toml`). After the first apply, run `prefix + I` in tmux to install plugins.
+
+## Daily use
+
+- Edit a managed file: `chezmoi edit ~/.zshrc`
+- Add a new file: `chezmoi add ~/.path/to/file`
+- Preview changes: `chezmoi diff`
+- Apply changes: `chezmoi apply`
+- Pull and apply updates: `chezmoi update`

@@ -1,9 +1,0 @@
-[window]
-opacity = 0.85
-
-[font.normal]
-family = "JetBrainsMono Nerd Font"
-
-[terminal.shell]
-program = "zsh"
-args = [ "-c", "tmux new-session -A -s default" ]
